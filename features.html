@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankAI Assistant - Our Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+          --primary-color: #ffffff;
+          --secondary-color: #ffffff;
+          --background-dark: #000000;
+          --text-primary: #ffffff;
+          --text-secondary: #ffffff;
+          --border-color: #1a1a1a;
+          --card-bg: rgba(10, 10, 10, 0.95);
+          --hover-color: #333333;
+        }
+
+        body {
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            color: var(--primary-color) !important;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary) !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+
+        .services-header {
+            text-align: center;
+            padding: 5rem 0 3rem;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.6)),
+                        url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=1920&q=80') center/cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .services-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.1);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(0, 242, 254, 0.03));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1.5rem;
+            filter: invert(1);
+            opacity: 0.9;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-link:hover {
+            color: var(--secondary-color);
+            gap: 0.75rem;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .services-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .service-card {
+                padding: 1.5rem;
+            }
+        }
+
+        adde now
+
+        /* Add these styles to your existing CSS */
+.service-content {
+    position: relative;
+    z-index: 2; /* Ensures content stays above the pseudo-element */
+}
+
+.btn-link {
+    display: inline-block;
+    position: relative;
+    z-index: 3; /* Higher than card z-index */
+    pointer-events: auto; /* Explicitly enable pointer events */
+}
+
+.service-card {
+    position: relative;
+}
+
+/* Debugging styles - remove after testing */
+.service-link {
+    border: 1px solid rgb(0, 0, 0); /* Temporary to see link area */
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">BankAI Assistant</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/features">services</a></li>
+                <li class="nav-item"><a class="nav-link" href="/Contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="services-header">
+        <div class="container">
+            <h1>Our Financial Services</h1>
+            <p class="text-secondary mb-0">Empowering your financial journey with AI-driven solutions</p>
+        </div>
+    </header>
+
+    <div class="container py-5">
+        <div class="row g-4">
+            <!-- AI Chat Assistant -->
+            <div class="col-md-6">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" 
+                         alt="AI Chat Assistant" 
+                         class="service-image">
+                    <h3 class="service-title">AI Chat Assistant</h3>
+                    <p class="service-description">
+                        Get instant, personalized financial guidance from our AI-powered chat assistant. Available 24/7 to answer your banking queries and provide tailored recommendations.
+                    </p>
+                    <a href="/bot_iframe" class="service-link btn-link">
+                        Start chatting →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mutual Funds -->
+            <div class="col-md-6">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=800&q=80"
+                         alt="Mutual Funds"
+                         class="service-image">
+                    <h3 class="service-title">Mutual Funds</h3>
+                    <p class="service-description">
+                        Explore our curated selection of mutual funds with AI-driven insights. Get personalized fund recommendations based on your risk profile and investment goals.
+                    </p>
+                    <a href="/mutual_funds" class="service-link btn-link">
+                        Explore funds →
+                    </a>
+                </div>
+            </div>
+
+            <!-- SIP Calculator -->
+            <div class="col-md-6">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80"
+                         alt="SIP Calculator"
+                         class="service-image">
+                    <div class="service-content">
+                        <h3 class="service-title">SIP Calculator</h3>
+                        <p class="service-description">
+                            Plan your investments with our advanced SIP calculator. Visualize your wealth growth and make informed decisions about your systematic investments.
+                        </p>
+                        <a href="sip_calculator" class="service-link btn-link">
+                            Calculate SIP →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loan Services -->
+            <div class="col-md-6">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=800&q=80"
+                         alt="Loan Services"
+                         class="service-image">
+                    <div class="service-content"> <!-- Added wrapper div -->
+                        <h3 class="service-title">Loan Services</h3>
+                        <p class="service-description">
+                            Calculate EMIs, compare loan options, and get instant eligibility checks. 
+                            Our AI helps you find the best loan products suited to your needs.
+                        </p>
+                        <a href="/loan_calculator_view" class="service-link btn-link"> <!-- Added btn-link class -->
+                            Check loans →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

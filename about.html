@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankAI Assistant - User Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #a0a0a0;
+            --background-dark: #000000;
+            --text-primary: #ffffff;
+            --text-secondary: #808080;
+            --border-color: #1a1a1a;
+            --card-bg: rgba(10, 10, 10, 0.95);
+            --hover-color: #333333;
+            --accent-color: #00f2fe;
+        }
+
+        body {
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            color: var(--accent-color) !important;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary) !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-color) !important;
+        }
+
+        .guide-header {
+            text-align: center;
+            padding: 5rem 0 3rem;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1920&q=80') center/cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .guide-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            animation: fadeInUp 1s ease;
+        }
+
+        .guide-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease;
+        }
+
+        .guide-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.1);
+        }
+
+        .section-title {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .prompt-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .prompt-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .prompt-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-color);
+            transform: translateX(10px);
+        }
+
+        .copy-indicator {
+            position: absolute;
+            right: 1rem;
+            opacity: 0;
+            color: var(--accent-color);
+            transition: opacity 0.3s ease;
+        }
+
+        .prompt-item:hover .copy-indicator {
+            opacity: 1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tooltip {
+            position: fixed;
+            background: var(--accent-color);
+            color: var(--background-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .guide-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">BankAI Assistant</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/About">Guide</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+    <header class="guide-header">
+        <div class="container">
+            <h1>AI Assistant Guide</h1>
+            <p class="text-secondary mb-0">Learn how to interact with our AI banking assistant effectively</p>
+        </div>
+    </header>
+
+    <div class="container py-5">
+        <!-- Loan Calculations Section -->
+        <div class="guide-section">
+            <h2 class="section-title">💰 Loan Calculations</h2>
+            <p class="text-secondary mb-4">Ask about EMI calculations and loan details</p>
+            <ul class="prompt-list">
+                <li class="prompt-item" data-prompt="How much EMI will I pay if I take a ₹5000000 loan for 5 years at 10% interest?">
+                    "How much EMI will I pay if I take a ₹5000000 loan for 5 years at 10% interest?"
+                    
+                </li>
+                <li class="prompt-item" data-prompt="Calculate EMI for a ₹100000 loan for 10 years at 8%.">
+                    "Calculate EMI for a ₹100000 loan for 10 years at 8%."
+                    
+                </li>
+                <li class="prompt-item" data-prompt="If I borrow ₹2000000 at 12% for 15 years, what will be my monthly payment?">
+                    "If I borrow ₹2000000 at 12% for 15 years, what will be my monthly payment?"
+                    
+                </li>
+            </ul>
+        </div>
+
+        <!-- SIP Calculations Section -->
+        <div class="guide-section">
+            <h2 class="section-title">📈 SIP Calculations</h2>
+            <p class="text-secondary mb-4">Explore systematic investment planning</p>
+            <ul class="prompt-list">
+                <li class="prompt-item" data-prompt="If I invest ₹5000 per month for 5 years, how much will I get?">
+                    "If I invest ₹5000 per month for 5 years, how much will I get?"
+                    
+                </li>
+                <li class="prompt-item" data-prompt="I want to know the future value of ₹10000 SIP for 10 years.">
+                    "I want to know the future value of ₹10000 SIP for 10 years."
+                    
+                </li>
+                <li class="prompt-item" data-prompt="Can you calculate returns if I invest ₹20000 every month for 15 years?">
+                    "Can you calculate returns if I invest ₹20000 every month for 15 years?"
+                    
+                </li>
+            </ul>
+        </div>
+
+        <!-- Mutual Funds Section -->
+        <div class="guide-section">
+            <h2 class="section-title">📊 Mutual Funds</h2>
+            <p class="text-secondary mb-4">Get personalized mutual fund recommendations</p>
+            
+            <ul class="prompt-list">
+                <li class="prompt-item" data-prompt="I am okay with high-risk investments.">
+                    "I am okay with high-risk investments."
+                    
+                </li>
+                <li class="prompt-item" data-prompt="I want moderate risk with decent returns.">
+                    "I want moderate risk with decent returns."
+                    
+                </li>
+                <li class="prompt-item" data-prompt="I prefer low-risk investment options.">
+                    "I prefer low-risk investment options."
+                    
+                </li>
+                <li class="prompt-item" data-prompt="I need tax-saving mutual funds with stable returns.">
+                    "I need tax-saving mutual funds with stable returns."
+            
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div id="tooltip" class="tooltip">Copied!</div>
+    <div class="content-wrapper">
+        <df-messenger
+          intent="WELCOME"
+          chat-title="BankingAI Assistant"
+          agent-id="d0c3b1c8-0fbb-4f0b-bc92-40cb8c5f3846"
+          language-code="en"
+          
+         
+          allow-feedback="false"
+          open-on-load="true"
+          hide-close-button="false"
+          max-height="800px"
+          max-width="800px"
+          theme="dark"
+        ></df-messenger>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tooltip = document.getElementById('tooltip');
+            
+            document.querySelectorAll('.prompt-item').forEach(item => {
+                item.addEventListener('click', async () => {
+                    const prompt = item.getAttribute('data-prompt');
+                    
+                    try {
+                        await navigator.clipboard.writeText(prompt);
+                        
+                        // Show tooltip
+                        tooltip.style.opacity = '1';
+                        tooltip.style.left = `${event.pageX + 10}px`;
+                        tooltip.style.top = `${event.pageY - 30}px`;
+                        
+                        // Hide tooltip after 1.5 seconds
+                        setTimeout(() => {
+                            tooltip.style.opacity = '0';
+                        }, 1500);
+                    } catch (err) {
+                        console.error('Failed to copy text: ', err);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
